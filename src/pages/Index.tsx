@@ -1,10 +1,12 @@
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { owaspTop10 } from '@/data/owaspData';
 import { RiskCategory } from '@/types/owasp';
 import { RiskCard } from '@/components/RiskCard';
 import { RiskDetail } from '@/components/RiskDetail';
-import { ShieldAlert } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ShieldAlert, PlayCircle } from 'lucide-react';
 
 const Index = () => {
   const [selectedRisk, setSelectedRisk] = useState<RiskCategory | null>(null);
@@ -21,9 +23,15 @@ const Index = () => {
             <ShieldAlert size={48} className="text-security-accent animate-pulse-slow" />
           </div>
           <h1 className="text-4xl font-bold mb-2">OWASP Top 10 Risk Explorer</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
             Interactive visualization of the most critical web application security risks
           </p>
+          <Link to="/lab">
+            <Button className="gap-2">
+              <PlayCircle size={18} />
+              Interactive Vulnerable Lab
+            </Button>
+          </Link>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
